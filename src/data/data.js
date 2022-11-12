@@ -58,3 +58,33 @@ export const ourService = [
         description: "Motorcycle Driving License is a license that allows you to drive a motorcycle. You can also drive a moped or a motor tricycle if it is not more than 50cc.",
     }
 ]
+
+
+// three testimonials data
+
+export const testimonials = [
+    {
+        _id: 1,
+        name: 'John Doe',
+        location: 'Dhaka, Bangladesh',
+        rating: 5,
+        reviewText: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal to using Content here, content',
+        image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg&_gl=1*ugnyac*_ga*MTY4NjM0MzcxOC4xNjY3ODMxODYz*_ga_8JE65Q40S6*MTY2ODI1MzUzMC4zLjEuMTY2ODI1MzUzNi4wLjAuMA..'
+    },
+    {
+        _id: 2,
+        name: 'John Doe Pro',
+        rating: 4,
+        location: 'Dhaka, Bangladesh',
+        reviewText: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal to using Content here, content',
+        image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg&_gl=1*ugnyac*_ga*MTY4NjM0MzcxOC4xNjY3ODMxODYz*_ga_8JE65Q40S6*MTY2ODI1MzUzMC4zLjEuMTY2ODI1MzUzNi4wLjAuMA..'
+    },
+    {
+        _id: 3,
+        name: 'John Doe Pro Max',
+        rating: 5,
+        location: 'Dhaka, Bangladesh',
+        reviewText: 'It is a long established fact that by the readable content of a lot layout. The point of using Lorem a more-or-less normal to using Content here, content',
+        image: 'https://images.pexels.com/photos/220453/pexels-photo-220453.jpeg?cs=srgb&dl=pexels-pixabay-220453.jpg&fm=jpg&_gl=1*ugnyac*_ga*MTY4NjM0MzcxOC4xNjY3ODMxODYz*_ga_8JE65Q40S6*MTY2ODI1MzUzMC4zLjEuMTY2ODI1MzUzNi4wLjAuMA..'
+    },
+]
