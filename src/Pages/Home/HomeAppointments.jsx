@@ -6,7 +6,7 @@ const HomeAppointments = () => {
             <div className="
             h-full w-full bg-gray-400 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 border border-gray-100 flex items-center
             ">
-                <img className='h-full hidden md:block -mt-32' src='https://www.reddrivingschool.com/wp-content/uploads/2021/04/New-Clio-Master-Pic-4-compressed.png' alt="" />
+                <img className='h-full hidden lg:block lg:w-1/2 -mt-32' src='https://www.reddrivingschool.com/wp-content/uploads/2021/04/New-Clio-Master-Pic-4-compressed.png' alt="" />
                 <div className="text-gray-300 p-10 space-y-2">
                     <h4 className='text-secondary'>Appointment</h4>
                     <h3 className="text-3xl font-serif font-semibold text-white">Make an appointment Today</h3>
