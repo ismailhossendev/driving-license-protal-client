@@ -10,7 +10,7 @@ const AppointmentModal = ({ bookingModal, selected }) => {
                 <form className="modal-box relative space-y-3">
                     <label htmlFor="appointment-modal" className="btn btn-sm btn-circle absolute right-2 top-2">✕</label>
                     <h3 className="text-lg font-bold">{name}</h3>
-                    <input type="text" name="" className='input input-bordered input-primary w-full' defaultValue={format(selected, "PPP")} disabled />
+                    <input type="text" name="" className='input input-bordered input-primary w-full disabled:bg-gray-300' defaultValue={format(selected, "PPP")} disabled />
                     <select className="select select-primary w-full ">
                         {
                             slots.map((slot, idx) => <option key={idx}>{slot}</option>)
