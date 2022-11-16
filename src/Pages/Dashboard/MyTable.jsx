@@ -1,6 +1,23 @@
-import React from 'react';
+import { async } from '@firebase/util';
+import { useQuery } from '@tanstack/react-query';
+import { format } from 'date-fns';
+import React, { useContext } from 'react';
+import { authContext } from '../../contexts/AuthContext';
 
-const MyTable = () => {
+const MyTable = ({ selected }) => {
+    const { user } = useContext(authContext);
+    const date = format(selected, "PP")
+    const { data, isLoading } = useQuery({
+        queryKey: ['myAppointments', date],
+        queryFn: async () => {
+            const req = await fetch(`http://localhost:5000/booking?email=${user?.email}&date=${date}`);
+            const data = await req.json();
+            return data;
+        }
+    })
+    if (isLoading) {
+        return
+    }
     return (
         <div className="overflow-x-auto">
             <table className="table w-full">
@@ -13,24 +30,16 @@ const MyTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <th>1</th>
-                        <td>Cy Ganderton</td>
-                        <td>Quality Control Specialist</td>
-                        <td>Blue</td>
-                    </tr>
-                    <tr>
-                        <th>2</th>
-                        <td>Hart Hagerty</td>
-                        <td>Desktop Support Technician</td>
-                        <td>Purple</td>
-                    </tr>
-                    <tr>
-                        <th>3</th>
-                        <td>Brice Swyre</td>
-                        <td>Tax Accountant</td>
-                        <td>Red</td>
-                    </tr>
+                    {
+                        data.map((booking, idx) => {
+                            return <tr>
+                                <th>{idx + 1}</th>
+                                <td>{user.displayName}</td>
+                                <td>{booking.serviceName}</td>
+                                <td>{booking.time}</td>
+                            </tr>
+                        })
+                    }
                 </tbody>
             </table>
         </div>

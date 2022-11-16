@@ -10,10 +10,10 @@ const MyAppointments = () => {
             <div className="flex justify-between  text-accent">
                 <h3 className="text-2xl">My Appointment</h3>
                 <div className="relative">
-                    <label htmlFor='date-modal' className="btn">{format(selected, "PPP")}</label>
+                    <label htmlFor='date-modal' className="btn">{format(selected, "PP")}</label>
                 </div>
             </div>
-            <MyTable />
+            <MyTable selected={selected} />
             <DateModal selected={selected} setSelected={setSelected} />
         </div>
     );
