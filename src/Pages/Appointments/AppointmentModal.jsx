@@ -14,7 +14,9 @@ const AppointmentModal = ({ bookingModal, selected, setBookingModal, refetch }) 
     const appointment = data => {
         data.serviceName = name;
         data.date = format(selected, "PP")
-        console.log(data);
+        if (user.role === "ban") {
+            return toast.error("You Banned User Not Allow to Get Appointment")
+        }
         fetch('http://localhost:5000/booking', {
             method: "POST",
             headers: {

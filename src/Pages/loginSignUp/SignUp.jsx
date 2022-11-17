@@ -1,22 +1,27 @@
 import React, { useContext } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { authContext } from '../../contexts/AuthContext';
+import token from '../../utilites/token';
 
 const SignUp = () => {
     const { handleSubmit, register, formState: { errors } } = useForm();
     const { createUser, withGoogle, updateUser } = useContext(authContext);
+    const navigate = useNavigate();
     const signUp = data => {
         createUser(data.email, data.password)
             .then(result => {
                 const upInfo = {
                     displayName: data.name
                 }
+                createData(data.name, data.email)
+                token(result.user.email)
                 updateUser(upInfo)
                     .then(() => {
+                        navigate('/')
                     })
-                toast.success('Successfully Registered')
+
             }).catch(err => {
                 toast.error(err.code)
             })
@@ -25,10 +30,28 @@ const SignUp = () => {
     const handleGoogle = () => {
         withGoogle()
             .then(result => {
-                toast.success('Login Successfully with google')
+                token(result.user.email)
+                createData(result.user.displayName, result.user.email)
+
             }).catch(err => {
                 toast.error(err.code)
             });
+    }
+
+    const createData = (name, email) => {
+        fetch('http://localhost:5000/users', {
+            method: "POST",
+            headers: {
+                "content-type": "application/json"
+            },
+            body: JSON.stringify({ name, email })
+        })
+            .then(res => res.json())
+            .then(data => {
+                if (data) {
+                    toast.success('SignUp Success')
+                }
+            })
     }
 
     return (

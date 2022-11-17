@@ -1,12 +1,14 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { authContext } from '../../contexts/AuthContext';
+import token from '../../utilites/token';
 
 const Login = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const { loginUser, withGoogle } = useContext(authContext);
+    const { loginUser, withGoogle, } = useContext(authContext);
+
 
     const location = useLocation();
     const navigate = useNavigate();
@@ -17,6 +19,7 @@ const Login = () => {
         loginUser(data.email, data.password)
             .then(result => {
                 toast.success('Login Success');
+                token(result.user.email)
                 navigate(from, { replace: true });
             }).catch(err => {
                 toast.error(err.code)
@@ -27,11 +30,13 @@ const Login = () => {
         withGoogle()
             .then(result => {
                 toast.success('Login Successfully with google')
+                token(result.user.email)
                 navigate(from, { replace: true });
             }).catch(err => {
                 toast.error(err.code)
             });
     }
+
     return (
         <div className='flex justify-center items-center lg:h-[65vh]'>
             <div className="flex flex-col max-w-md p-3 w-full rounded-md sm:p-10 backdrop-blur-sm  shadow shadow-slate-600" >

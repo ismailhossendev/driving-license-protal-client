@@ -1,22 +1,30 @@
-import { async } from '@firebase/util';
-import { useQuery } from '@tanstack/react-query';
 import { format } from 'date-fns';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../contexts/AuthContext';
 
 const MyTable = ({ selected }) => {
-    const { user } = useContext(authContext);
+    const { user, loading } = useContext(authContext);
     const date = format(selected, "PP")
-    const { data, isLoading } = useQuery({
-        queryKey: ['myAppointments', date],
-        queryFn: async () => {
-            const req = await fetch(`http://localhost:5000/booking?email=${user?.email}&date=${date}`);
-            const data = await req.json();
-            return data;
-        }
-    })
-    if (isLoading) {
+    const [data, setData] = useState([]);
+    useEffect(() => {
+
+        fetch(`http://localhost:5000/booking?email=${user.email}&date=${date}`, {
+            headers: {
+                authorization: `Bearer ${localStorage.getItem('token')}`
+            }
+        })
+            .then(res => res.json())
+            .then(result => {
+
+                setData(result);
+            })
+    }, [date, user?.email])
+
+    if (loading) {
         return
+    }
+    if (user.role === "ban") {
+        return <h2 className="text-3xl text-red-700 font-bold">You Banned Contact Us</h2>
     }
     return (
         <div className="overflow-x-auto">
@@ -30,9 +38,9 @@ const MyTable = ({ selected }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {
+                    {user.role !== "ban" &&
                         data.map((booking, idx) => {
-                            return <tr>
+                            return <tr key={idx}>
                                 <th>{idx + 1}</th>
                                 <td>{user.displayName}</td>
                                 <td>{booking.serviceName}</td>
