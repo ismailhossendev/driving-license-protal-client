@@ -3,15 +3,18 @@ import Main from "../Layout/Main";
 import Appointments from "../Pages/Appointments/Appointments";
 import AdminUsers from "../Pages/Dashboard/Admin/AdminUsers";
 import BanUsers from "../Pages/Dashboard/Admin/BanUsers";
+import Messages from "../Pages/Dashboard/Admin/Messages";
 import StaffUsers from "../Pages/Dashboard/Admin/StaffUsers";
 import Users from "../Pages/Dashboard/Admin/Users";
 import Dashboard from "../Pages/Dashboard/Dashboard";
 import MyAppointments from "../Pages/Dashboard/MyAppointments";
+import SideBar from "../Pages/Dashboard/SideBar";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/loginSignUp/Login";
 import SignUp from "../Pages/loginSignUp/SignUp";
 import AdminRoute from "./AdminRoute";
 import LoginRoute from "./LoginRoute";
+import StaffRoute from "./StaffRoute";
 
 export const router = createBrowserRouter([
     {
@@ -37,7 +40,7 @@ export const router = createBrowserRouter([
     },
     {
         path: '/dashboard',
-        element: <LoginRoute><Dashboard /></LoginRoute>,
+        element: <LoginRoute><SideBar /></LoginRoute>,
         children: ([
             {
                 path: '/dashboard',
@@ -59,6 +62,10 @@ export const router = createBrowserRouter([
                 path: '/dashboard/staffs',
                 element: <AdminRoute><StaffUsers /></AdminRoute>
             },
+            {
+                path: '/dashboard/messages',
+                element: <StaffRoute><Messages /></StaffRoute>
+            }
         ])
     }
 ])

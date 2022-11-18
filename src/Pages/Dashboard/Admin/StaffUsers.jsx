@@ -1,19 +1,9 @@
-import React, { useEffect, useState } from 'react';
 import toast from 'react-hot-toast';
+import useFetch from '../../../hooks/useFetch';
 
 const StaffUsers = () => {
-    const [users, setUsers] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/users?role=staff', {
-            headers: {
-                authorization: `Bearer ${localStorage.getItem('token')}`,
-            }
-        })
-            .then(res => res.json())
-            .then(data => {
-                setUsers(data)
-            })
-    }, [])
+    const url = 'http://localhost:5000/users?role=staff';
+    const [users] = useFetch(url)
 
     const HandleRole = (role, id) => {
         const agree = window.confirm(`Sure Make it ${role}?`);

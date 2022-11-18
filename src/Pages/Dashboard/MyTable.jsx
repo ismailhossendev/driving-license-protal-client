@@ -1,6 +1,7 @@
 import { format } from 'date-fns';
 import React, { useContext, useEffect, useState } from 'react';
 import { authContext } from '../../contexts/AuthContext';
+import ContactUs from '../Home/ContactUs';
 
 const MyTable = ({ selected }) => {
     const { user, loading } = useContext(authContext);
@@ -24,7 +25,7 @@ const MyTable = ({ selected }) => {
         return
     }
     if (user.role === "ban") {
-        return <h2 className="text-3xl text-red-700 font-bold">You Banned Contact Us</h2>
+        return <><h2 className="text-3xl text-red-700 font-bold">You Banned Contact Us</h2> <ContactUs /></>
     }
     return (
         <div className="overflow-x-auto">

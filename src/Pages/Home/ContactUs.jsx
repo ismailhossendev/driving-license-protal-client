@@ -1,11 +1,12 @@
+import { format } from 'date-fns';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import toast from 'react-hot-toast';
 
 const ContactUs = () => {
     const { handleSubmit, register, formState: { errors } } = useForm()
-
     const handleContact = data => {
+        data.date = format(new Date(), "PP")
         fetch('http://localhost:5000/messages', {
             method: "POST",
             headers: {
