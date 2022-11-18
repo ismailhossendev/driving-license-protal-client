@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Appointments from "../Pages/Appointments/Appointments";
 import AdminUsers from "../Pages/Dashboard/Admin/AdminUsers";
+import AllAppointments from "../Pages/Dashboard/Admin/AllAppointments";
 import BanUsers from "../Pages/Dashboard/Admin/BanUsers";
 import Messages from "../Pages/Dashboard/Admin/Messages";
 import StaffUsers from "../Pages/Dashboard/Admin/StaffUsers";
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
             {
                 path: '/dashboard/messages',
                 element: <StaffRoute><Messages /></StaffRoute>
+            },
+            {
+                path: '/dashboard/all-Appointments',
+                element: <StaffRoute><AllAppointments /></StaffRoute>
             }
         ])
     }

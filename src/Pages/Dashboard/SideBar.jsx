@@ -53,10 +53,17 @@ const SideBar = () => {
                             </details>
                         }
                         {(user.role === "admin" || user.role === "staff") &&
-                            <Link to='/dashboard/messages' className="flex items-center rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
-                                <FaCommentAlt />
-                                <span className="ml-3 text-sm font-medium">Public Messages</span>
-                            </Link>
+                            <>
+
+                                <Link to='/dashboard/messages' className="flex items-center rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                    <FaCommentAlt />
+                                    <span className="ml-3 text-sm font-medium">Public Messages</span>
+                                </Link>
+                                <Link to='/dashboard/all-Appointments' className="flex items-center rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                    <FaRegCalendarAlt />
+                                    <span className="ml-3 text-sm font-medium">All Appointments</span>
+                                </Link>
+                            </>
                         }
                     </ul>
 
