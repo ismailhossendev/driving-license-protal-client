@@ -17,6 +17,7 @@ const AllAppointments = () => {
                             <th>SERVICE</th>
                             <th>DATE</th>
                             <th>TIME</th>
+                            <td>Payment Status</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -28,6 +29,7 @@ const AllAppointments = () => {
                                     <td>{booking.serviceName}</td>
                                     <td>{booking.date}</td>
                                     <td>{booking.time}</td>
+                                    <td> {booking.paymentMethod ? "Confirmed By - " + booking.paymentMethod : booking.status ? booking.status : "Un Paid"}</td>
                                 </tr>
                             })
                         }

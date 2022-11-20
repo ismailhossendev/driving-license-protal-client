@@ -27,7 +27,7 @@ const AppointmentModal = ({ bookingModal, selected, setBookingModal, refetch }) 
             .then(res => res.json())
             .then(data => {
                 if (data.success) {
-                    toast.success(data.message)
+                    toast.success(data.message + "Please Go to DashBoard For Payment")
                     setBookingModal(null)
                     refetch();
                 } else {

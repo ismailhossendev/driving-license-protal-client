@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import hero_image from '../../assets/images/hero-image.svg';
 import BtnPrimary from '../../components/BtnPrimary';
 const Hero = () => {
@@ -14,7 +15,7 @@ const Hero = () => {
                     <p className="py-6">
                         Making Your Driving test appointment is now easy and fast. <br />
                     </p>
-                    <BtnPrimary>Book Now</BtnPrimary>
+                    <Link to='/signup' className='btn btn-secondary'>Register Now</Link>
                 </div>
             </div>
         </div >

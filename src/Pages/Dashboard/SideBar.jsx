@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import { authContext } from '../../contexts/AuthContext';
-import { FaUserFriends, FaUserShield, FaUserAstronaut, FaRegCalendarAlt, FaUsers, FaAngleDown, FaCommentAlt } from "react-icons/fa";
+import { FaUserFriends, FaUserShield, FaUserAstronaut, FaRegCalendarAlt, FaUsers, FaAngleDown, FaCommentAlt, FaShieldVirus } from "react-icons/fa";
 import Navbar from '../../components/Navbar';
 
 const SideBar = () => {
@@ -9,14 +9,14 @@ const SideBar = () => {
     return (
         <>
             <Navbar />
-            <div className="drawer drawer-mobile container mx-auto">
+            <div className="drawer drawer-mobile container mx-auto ">
                 <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
                 <div className="drawer-content ">
                     <Outlet />
                 </div>
-                <div className="drawer-side">
+                <div className="drawer-side ">
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
-                    <ul className="menu p-4 w-80 bg-base-100 text-base-content">
+                    <ul className="menu p-4 w-80 text-base-content lg:bg-none ">
                         <Link to='/dashboard' className="flex items-center rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
                             <FaRegCalendarAlt />
                             <span className="ml-3 text-sm font-medium">My Appointments </span>
@@ -49,6 +49,10 @@ const SideBar = () => {
                                         <FaUserAstronaut />
                                         <span className="ml-3 text-sm font-medium">Staffs</span>
                                     </Link>
+                                    <Link to='/dashboard/services' className="flex items-center rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                                        <FaShieldVirus />
+                                        <span className="ml-3 text-sm font-medium">All Services</span>
+                                    </Link>
                                 </nav>
                             </details>
                         }
@@ -63,6 +67,7 @@ const SideBar = () => {
                                     <FaRegCalendarAlt />
                                     <span className="ml-3 text-sm font-medium">All Appointments</span>
                                 </Link>
+
                             </>
                         }
                     </ul>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import BtnPrimary from '../../components/BtnPrimary';
 const HomeAppointments = () => {
     return (
@@ -14,7 +15,8 @@ const HomeAppointments = () => {
                         Make an appointment with our professional instructors and get your driving license in no time.
 
                     </p>
-                    <BtnPrimary>Get started</BtnPrimary>
+
+                    <BtnPrimary><Link to='/appointment'>Get started</Link></BtnPrimary>
 
                 </div>
             </div>
